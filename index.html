@@ -1,215 +1,1179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis | AI & Dev Surf Rider</title>
-    <style>
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-color: #c9d1d9;
-            --accent-color: #58a6ff; /* Azul Oceano Clássico do GH */
-            --surf-neon: #00f0ff;    /* Azul Surfista Cyberpunk */
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: rgba(22, 27, 34, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #30363d;
-        }
-        nav {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: var(--surf-neon);
-        }
-        .logo {
-            font-weight: bold;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-        }
-        .hero {
-            max-width: 1000px;
-            margin: 140px auto 60px;
-            padding: 2rem;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            color: #f0f6fc;
-            margin-bottom: 0.5rem;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: #8b949e;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        section {
-            margin-bottom: 4rem;
-        }
-        h2 {
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 0.5rem;
-            color: #f0f6fc;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--surf-neon);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #f0f6fc;
-        }
-        .tech-tags {
-            margin-top: 1rem;
-        }
-        .tag {
-            background-color: #21262d;
-            color: var(--accent-color);
-            padding: 0.2rem 0.6rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #30363d;
-            color: #8b949e;
-            font-size: 0.9rem;
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Surfin Web — Estúdio de software com IA aplicada</title>
+<meta name="description" content="Estúdio brasileiro de SaaS, produtos web e engenharia de IA. Construímos software que escala, da arquitetura à infraestrutura." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Surfin Web — Estúdio de software com IA aplicada" />
+<meta property="og:description" content="Estúdio brasileiro de SaaS, produtos web e engenharia de IA. Da arquitetura à infraestrutura." />
+<meta property="og:type" content="website" />
+
+<!-- Google Fonts: Newsreader (display serif) + Geist (sans) + Geist Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- design tokens ---------- */
+:root{
+  --bg:        #FAFAF8;
+  --surface:   #FFFFFF;
+  --ink:       #0A0A0A;
+  --ink-2:     #2A2A28;
+  --mid:       #5A5A56;
+  --mute:      #8C8C86;
+  --hairline:  #E5E3DC;
+  --hairline-2:#EFEDE5;
+  --accent:    #1A36C9;
+  --accent-ink:#0E1F8A;
+  --live:      #10A847;
+  --warn:      #C25A1A;
+
+  --serif: 'Newsreader', ui-serif, Georgia, serif;
+  --sans:  'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mono:  'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --max: 1120px;
+  --pad: clamp(20px, 4vw, 40px);
+  --r-sm: 6px;
+  --r-md: 10px;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv01";
+}
+img, svg { display:block; max-width:100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* ---------- container ---------- */
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* ---------- header ---------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s ease, background .25s ease;
+}
+.site-header.is-stuck{ border-bottom-color: var(--hairline); }
+.site-header .wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.brand-mark{
+  width: 14px; height: 14px;
+  border-radius: 4px;
+  background: var(--ink);
+  position: relative;
+}
+.brand-mark::after{
+  content:"";
+  position:absolute;
+  inset: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.brand strong{ font-weight: 500; }
+.brand span{ color: var(--mid); }
+
+.nav{
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav a{
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--mid);
+  transition: color .15s ease;
+}
+.nav a:hover{ color: var(--ink); }
+.nav a.cta{
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  padding: 7px 12px;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  transition: border-color .2s ease, transform .2s ease;
+}
+.nav a.cta:hover{ border-color: var(--ink); transform: translateY(-1px); }
+@media (max-width: 720px){
+  .nav a:not(.cta){ display: none; }
+}
+
+/* ---------- live bar (signature) ---------- */
+.live-bar{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mid);
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 32px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.live-dot{
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--live);
+  position: relative;
+  flex-shrink: 0;
+}
+.live-dot::after{
+  content:"";
+  position:absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--live);
+  opacity: .35;
+  animation: pulse 1.8s ease-out infinite;
+}
+@keyframes pulse{
+  0%   { transform: scale(.4); opacity: .6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.live-bar .label{ color: var(--ink); font-weight: 500; }
+.live-bar .sep{ color: var(--hairline); }
+.live-bar .ticker{
+  display: inline-flex;
+  gap: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+}
+.live-bar .ticker-inner{
+  display: inline-flex;
+  gap: 14px;
+  animation: ticker 22s linear infinite;
+}
+.live-bar .ticker-inner span{ color: var(--mid); }
+@keyframes ticker{
+  from{ transform: translateX(0); }
+  to  { transform: translateX(-50%); }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  padding: clamp(72px, 12vh, 140px) 0 clamp(72px, 10vh, 120px);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero .wrap{
+  position: relative;
+  z-index: 2;
+}
+
+/* hero background: blueprint dot-grid + embedding scatter canvas */
+.hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--hairline) 1px, transparent 0);
+  background-size: 26px 26px;
+  background-position: 0 0;
+  -webkit-mask-image: radial-gradient(ellipse at 55% 45%, #000 25%, transparent 78%);
+          mask-image: radial-gradient(ellipse at 55% 45%, #000 25%, transparent 78%);
+  opacity: .9;
+}
+.hero-canvas{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}
+
+/* morphing word in headline */
+.morph{
+  display: inline-block;
+  position: relative;
+  font-style: italic;
+  color: var(--accent);
+  vertical-align: baseline;
+  text-align: left;
+  white-space: nowrap;
+}
+.morph .word{
+  display: inline-block;
+  will-change: opacity, transform, filter;
+  transition: opacity .42s cubic-bezier(.4,.0,.2,1),
+              transform .42s cubic-bezier(.4,.0,.2,1),
+              filter .42s cubic-bezier(.4,.0,.2,1);
+}
+.morph .word.is-leaving{
+  opacity: 0;
+  transform: translateY(-8px);
+  filter: blur(3px);
+}
+.morph .word.is-entering{
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+}
+.hero h1{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 7.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  max-width: 18ch;
+  color: var(--ink);
+}
+.hero h1 em{
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.hero .lede{
+  font-size: clamp(17px, 1.6vw, 19px);
+  color: var(--mid);
+  max-width: 56ch;
+  margin: 0 0 36px;
+  line-height: 1.5;
+}
+.hero-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+.btn-primary{
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover{ background: var(--accent-ink); transform: translateY(-1px); }
+.btn-ghost{
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline);
+}
+.btn-ghost:hover{ border-color: var(--ink); transform: translateY(-1px); }
+.btn .arrow{
+  display: inline-block;
+  transition: transform .2s ease;
+}
+.btn:hover .arrow{ transform: translate(2px, -2px); }
+
+/* hero meta line below */
+.hero-meta{
+  margin-top: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 48px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mid);
+  border-top: 1px solid var(--hairline);
+  padding-top: 24px;
+}
+.hero-meta dt{ color: var(--mute); margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;}
+.hero-meta dd{ margin:0; color: var(--ink); font-size: 13px;}
+
+/* ---------- section pattern ---------- */
+.section{
+  padding: clamp(64px, 9vh, 110px) 0;
+  border-top: 1px solid var(--hairline);
+}
+.section-label{
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mid);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before{
+  content:"";
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 1px;
+  display: inline-block;
+}
+.section-title{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 40px);
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  margin: 0 0 48px;
+  max-width: 28ch;
+  color: var(--ink);
+}
+.section-title em{ font-style: italic; color: var(--accent); }
+
+/* ---------- capabilities grid ---------- */
+.cap-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.cap{
+  background: var(--surface);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+  transition: background .2s ease;
+}
+.cap:hover{ background: #FCFCF9; }
+.cap-num{
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: .05em;
+}
+.cap-name{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.cap-desc{
+  font-size: 14.5px;
+  color: var(--mid);
+  line-height: 1.55;
+  margin: 0;
+}
+.cap-tags{
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mute);
+  padding-top: 16px;
+  border-top: 1px dashed var(--hairline);
+}
+@media (max-width: 840px){
+  .cap-grid{ grid-template-columns: 1fr; }
+}
+
+/* ---------- stack ---------- */
+.stack-intro{
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+.stack-intro p{
+  color: var(--mid);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 56ch;
+}
+@media (max-width: 840px){
+  .stack-intro{ grid-template-columns: 1fr; gap: 24px; }
+}
+.stack-groups{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 40px;
+}
+.stack-group h4{
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+.chip-row{ display: flex; flex-wrap: wrap; gap: 6px; }
+.chip{
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: border-color .15s ease, color .15s ease, transform .15s ease;
+}
+.chip:hover{ border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+/* ---------- work ---------- */
+.work-list{
+  display: grid;
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.work-item{
+  display: grid;
+  grid-template-columns: 90px 1fr 220px 24px;
+  gap: 32px;
+  align-items: center;
+  padding: 28px 28px;
+  background: var(--surface);
+  transition: background .2s ease, padding .2s ease;
+  position: relative;
+}
+.work-item:hover{ background: #FCFCF9; }
+.work-num{
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mute);
+}
+.work-title{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -.015em;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+.work-desc{
+  font-size: 14px;
+  color: var(--mid);
+  margin: 0;
+  max-width: 64ch;
+}
+.work-stack{
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--mid);
+  text-align: right;
+}
+.work-arrow{
+  color: var(--mid);
+  font-family: var(--mono);
+  font-size: 16px;
+  transition: transform .2s ease, color .2s ease;
+}
+.work-item:hover .work-arrow{ transform: translate(3px, -3px); color: var(--accent); }
+@media (max-width: 840px){
+  .work-item{
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px;
+  }
+  .work-num{ font-size: 11px; }
+  .work-stack{ text-align: left; padding-top: 8px; }
+  .work-arrow{ display: none; }
+}
+
+/* ---------- contact ---------- */
+.contact{
+  padding: clamp(80px, 12vh, 140px) 0;
+  border-top: 1px solid var(--hairline);
+}
+.contact-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.contact h2{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5.4vw, 64px);
+  letter-spacing: -.022em;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--ink);
+}
+.contact h2 em{ font-style: italic; color: var(--accent); }
+.contact-links{
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--hairline);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.contact-link{
+  background: var(--bg);
+  padding: 18px 4px 18px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ink);
+  transition: padding .2s ease, color .2s ease;
+}
+.contact-link:hover{ padding-left: 12px; color: var(--accent); }
+.contact-link .ext{
+  font-size: 13px;
+  color: var(--mid);
+  transition: transform .2s ease;
+}
+.contact-link:hover .ext{ transform: translate(3px, -3px); color: var(--accent); }
+@media (max-width: 840px){
+  .contact-grid{ grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ---------- footer ---------- */
+.site-footer{
+  border-top: 1px solid var(--hairline);
+  padding: 28px 0 40px;
+}
+.site-footer .wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--mute);
+}
+.site-footer a{ color: var(--mid); }
+.site-footer a:hover{ color: var(--ink); }
+
+/* ---------- scroll reveal ---------- */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1);
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* page load stagger */
+.hero .stagger > *{
+  opacity: 0;
+  transform: translateY(10px);
+  animation: rise .8s cubic-bezier(.2,.6,.2,1) forwards;
+}
+.hero .stagger > *:nth-child(1){ animation-delay: .05s; }
+.hero .stagger > *:nth-child(2){ animation-delay: .18s; }
+.hero .stagger > *:nth-child(3){ animation-delay: .30s; }
+.hero .stagger > *:nth-child(4){ animation-delay: .42s; }
+.hero .stagger > *:nth-child(5){ animation-delay: .56s; }
+@keyframes rise{
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* focus */
+a:focus-visible, button:focus-visible, .chip:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+  .reveal{ opacity: 1; transform: none; }
+  .hero .stagger > *{ opacity: 1; transform: none; animation: none; }
+  .live-dot::after{ animation: none; opacity: 0; }
+  .ticker-inner{ animation: none; }
+}
+
+/* selection */
+::selection{ background: var(--accent); color: #fff; }
+</style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">🏄‍♂️ LUIS.DEV // SURF CAMP</div>
-            <div>
-                <a href="#sobre">Sobre o Drop</a>
-                <a href="#habilidades">Shaper Room</a>
-                <a href="#projetos">Ondas Dominadas</a>
-            </div>
-        </nav>
-    </header>
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Surfin Web — início">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <strong>surfin</strong><span>/</span><strong>web</strong>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#capabilities">capabilities</a>
+      <a href="#stack">stack</a>
+      <a href="#work">work</a>
+      <a class="cta" href="#contact">contato →</a>
+    </nav>
+  </div>
+</header>
 
-    <div class="hero">
-        <h1>Luis Henrique</h1>
-        <p>Dropando as maiores ondas da Inteligência Artificial & Cloud Infrastructure. Ensinando a próxima geração a navegar com alegria e inteligência.</p>
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+
+    <div class="hero-bg" aria-hidden="true"></div>
+    <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="wrap stagger">
+
+      <div class="live-bar" role="status" aria-label="Em produção agora">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="label">live</span>
+        <span class="sep">·</span>
+        <span>building</span>
+        <span class="ticker" aria-hidden="true">
+          <span class="ticker-inner">
+            <!-- TODO: edite a lista de produtos que você está construindo -->
+            <span>vemprawebAI</span><span>·</span>
+            <span>certificado-digital-global</span><span>·</span>
+            <span>estoril</span><span>·</span>
+            <span>emporium-bem-estar</span><span>·</span>
+            <span>vemprawebAI</span><span>·</span>
+            <span>certificado-digital-global</span><span>·</span>
+            <span>estoril</span><span>·</span>
+            <span>emporium-bem-estar</span><span>·</span>
+          </span>
+        </span>
+      </div>
+
+      <h1>
+        Software com <em class="morph" data-words="inteligência,matemática,estatística,arquitetura">inteligência</em> aplicada,<br>
+        construído pra escalar.
+      </h1>
+
+      <p class="lede">
+        Estúdio brasileiro de SaaS e produtos web. Da arquitetura de domínio
+        à infraestrutura: tomamos decisões de engenharia que se sustentam
+        em produção — e usamos IA onde ela realmente muda o produto.
+      </p>
+
+      <div class="hero-actions">
+        <!-- TODO: substitua pelo seu link real do LinkedIn -->
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/luis-henrique-ponciano/" target="_blank" rel="noopener">
+          Conectar no LinkedIn <span class="arrow">↗</span>
+        </a>
+        <!-- TODO: substitua pelo link do seu GitHub -->
+        <a class="btn btn-ghost" href="https://github.com/surfin-web" target="_blank" rel="noopener">
+          Ver no GitHub <span class="arrow">↗</span>
+        </a>
+      </div>
+
+      <dl class="hero-meta">
+        <div>
+          <dt>baseado em</dt>
+          <dd>São Paulo, BR</dd>
+        </div>
+        <div>
+          <dt>foco</dt>
+          <dd>SaaS B2B · IA aplicada · Web</dd>
+        </div>
+        <div>
+          <dt>status</dt>
+          <dd>Aceitando novos projetos</dd>
+        </div>
+        <div>
+          <dt>idiomas</dt>
+          <dd>PT · EN</dd>
+        </div>
+      </dl>
+
     </div>
+  </section>
 
-    <div class="container">
-        
-        <section id="sobre">
-            <h2>Sobre o Drop 🌊</h2>
-            <p>No ecossistema digital, programar e implementar IA é como surfar: exige leitura rápida do cenário, equilíbrio constante e a prancha certa para cada mar. Minha missão é construir infraestruturas de servidores robustas, arquitetar soluções inteligentes e provar para o meu filho que as linhas de código e os modelos de IA são a melhor correnteza para nos levar mais longe, com leveza e diversão.</p>
-        </section>
+  <!-- ============ CAPABILITIES ============ -->
+  <section class="section" id="capabilities">
+    <div class="wrap">
+      <p class="section-label reveal">capabilities/</p>
+      <h2 class="section-title reveal">
+        Três frentes. Uma só engenharia <em>com propósito.</em>
+      </h2>
 
-        <section id="habilidades">
-            <h2>Meu Shaper Room (Habilidades) ⚙️</h2>
-            <div class="skills-list">
-                <span class="tag">Inteligência Artificial</span>
-                <span class="tag">Engenharia de Prompt</span>
-                <span class="tag">Google Cloud Platform</span>
-                <span class="tag">AWS</span>
-                <span class="tag">Infraestrutura Web & WHM</span>
-                <span class="tag">LiteSpeed Servers</span>
-                <span class="tag">Automação com Agentes de IA</span>
-                <span class="tag">Arquitetura de TI</span>
-            </div>
-        </section>
+      <div class="cap-grid reveal">
+        <article class="cap">
+          <span class="cap-num">01</span>
+          <h3 class="cap-name">SaaS &amp; produtos próprios</h3>
+          <p class="cap-desc">
+            Produtos web monetizáveis do zero ao mercado: descoberta,
+            arquitetura modular, billing, e UX que reduz tempo até o
+            primeiro valor.
+          </p>
+          <div class="cap-tags">DDD-lite · Multi-tenant · Stripe / MP</div>
+        </article>
 
-        <section id="projetos">
-            <h2>Ondas Dominadas (Projetos em Destaque) 🏆</h2>
-            <div class="grid">
-                
-                <div class="card">
-                    <h3>Edge AI & Microcontroladores</h3>
-                    <p>Modelos leves de Machine Learning otimizados para rodar localmente e em ecossistemas embarcados inteligentes.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">TinyML</span>
-                        <span class="tag">Hardware</span>
-                    </div>
-                </div>
+        <article class="cap">
+          <span class="cap-num">02</span>
+          <h3 class="cap-name">Engenharia de IA</h3>
+          <p class="cap-desc">
+            Agentes, busca semântica e pipelines com base estatística.
+            Probabilidade, previsibilidade e custo medidos — IA sai do
+            demo e entra em produção.
+          </p>
+          <div class="cap-tags">RAG · pgvector · LLM Ops · Evals</div>
+        </article>
 
-                <div class="card">
-                    <h3>Cloud & High Performance Web</h3>
-                    <p>Configuração e otimização de servidores de alta performance utilizando LiteSpeed e arquiteturas em nuvem resilientes.</p>
-                    <div class="tech-tags">
-                        <span class="tag">GCP</span>
-                        <span class="tag">AWS</span>
-                        <span class="tag">LiteSpeed</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>AI Mentoring / Next-Gen Code</h3>
-                    <p>Metodologias práticas e gamificadas para introduzir lógica de programação e ferramentas avançadas de IA para novos "padawans".</p>
-                    <div class="tech-tags">
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">Gamificação</span>
-                        <span class="tag">Educação</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+        <article class="cap">
+          <span class="cap-num">03</span>
+          <h3 class="cap-name">Infra sob medida</h3>
+          <p class="cap-desc">
+            Self-hosted em Hetzner/Contabo com Coolify e Cloudflare na
+            frente. Performance previsível, opex enxuto e zero lock-in
+            com hyperscaler.
+          </p>
+          <div class="cap-tags">Coolify · Postgres · PostGIS · Redis</div>
+        </article>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2026 - Desenvolvido por Luis Henrique. Hospedado com orgulho no GitHub Pages 🌊</p>
-    </footer>
+  <!-- ============ STACK ============ -->
+  <section class="section" id="stack">
+    <div class="wrap">
+      <p class="section-label reveal">stack/</p>
+      <div class="stack-intro reveal">
+        <h2 class="section-title" style="margin-bottom:0;">
+          Ferramentas <em>escolhidas</em>, não acumuladas.
+        </h2>
+        <p>
+          Cada camada do stack passa por um critério simples: precisa entregar
+          velocidade hoje, manter custo previsível em escala, e não pedir
+          time inteiro pra operar. Sem hype.
+        </p>
+      </div>
+
+      <div class="stack-groups reveal">
+        <div class="stack-group">
+          <h4>frontend</h4>
+          <div class="chip-row">
+            <span class="chip">Next.js 15</span>
+            <span class="chip">TanStack Router</span>
+            <span class="chip">Vite</span>
+            <span class="chip">React 19</span>
+            <span class="chip">Tailwind</span>
+            <span class="chip">shadcn/ui</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>backend</h4>
+          <div class="chip-row">
+            <span class="chip">NestJS</span>
+            <span class="chip">Fastify</span>
+            <span class="chip">Bun</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Turborepo</span>
+            <span class="chip">Better Auth</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>dados &amp; ia</h4>
+          <div class="chip-row">
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Prisma 7</span>
+            <span class="chip">PostGIS</span>
+            <span class="chip">pgvector</span>
+            <span class="chip">Supabase</span>
+            <span class="chip">Redis</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>infra &amp; ops</h4>
+          <div class="chip-row">
+            <span class="chip">Coolify</span>
+            <span class="chip">Hetzner</span>
+            <span class="chip">Contabo</span>
+            <span class="chip">Cloudflare</span>
+            <span class="chip">GitHub Actions</span>
+            <span class="chip">Ubuntu 24.04</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <p class="section-label reveal">work/</p>
+      <h2 class="section-title reveal">
+        Projetos selecionados, <em>em produção ou rumo a ela.</em>
+      </h2>
+
+      <div class="work-list reveal">
+
+        <!-- TODO: edite cada item conforme quiser tornar público -->
+        <a class="work-item" href="#" aria-label="VemPraWeb">
+          <span class="work-num">001</span>
+          <div>
+            <h3 class="work-title">VemPraWeb </h3>
+            <p class="work-desc">
+              SaaS B2B de descoberta de negócios locais com interface
+              conversacional. Busca semântica geoespacial sobre PostGIS +
+              pgvector, arquitetura DDD-lite e infraestrutura self-hosted.
+            </p>
+          </div>
+          <div class="work-stack">Next.js · NestJS<br>Postgres · pgvector</div>
+          <span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="work-item" href="#" aria-label="Certificado Digital Global">
+          <span class="work-num">002</span>
+          <div>
+            <h3 class="work-title">Certificado Digital Global</h3>
+            <p class="work-desc">
+              Plataforma de emissão de certificados ICP-Brasil credenciada,
+              com cobertura internacional, site bilíngue PT/EN e funil
+              otimizado por auditoria de UX e tracking com Consent Mode V2.
+            </p>
+          </div>
+          <div class="work-stack">React · Vite<br>i18n · LGPD/GDPR</div>
+          <span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="work-item" href="#" aria-label="Estoril Charging Map">
+          <span class="work-num">003</span>
+          <div>
+            <h3 class="work-title">Estoril</h3>
+            <p class="work-desc">
+              Mapa interativo de pontos de recarga de veículos elétricos
+              consumindo Open Charge Map API. Front geoespacial leve,
+              deployment em VPS próprio.
+            </p>
+          </div>
+          <div class="work-stack">MapLibre GL · TS<br>Self-hosted</div>
+          <span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="work-item" href="#" aria-label="Emporium Bem Estar">
+          <span class="work-num">004</span>
+          <div>
+            <h3 class="work-title">Emporium Bem Estar</h3>
+            <p class="work-desc">
+              E-commerce premium de alimentos saudáveis. Identidade
+              estratégica completa, design system próprio e roadmap em
+              duas fases (WhatsApp → Mercado Pago).
+            </p>
+          </div>
+          <div class="work-stack">React · Zustand<br>shadcn/ui</div>
+          <span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <h2 class="reveal">
+          Tem um produto pra <em>tirar do papel?</em><br>
+          Vamos conversar.
+        </h2>
+
+        <div class="contact-links reveal" role="list">
+          <!-- TODO: substitua pelo seu link real -->
+          <a class="contact-link" href="https://www.linkedin.com/in/luis-henrique-ponciano/" target="_blank" rel="noopener">
+            <span>linkedin/</span>
+            <span class="ext">→</span>
+          </a>
+          <a class="contact-link" href="https://github.com/surfin-web" target="_blank" rel="noopener">
+            <span>github/</span>
+            <span class="ext">→</span>
+          </a>
+          <!-- TODO: troque pelo seu e-mail -->
+          <a class="contact-link" href="mailto:luisponciano@gmail.com">
+            <span>email/</span>
+            <span class="ext">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> surfin/web — São Paulo, BR</span>
+    <span>built with care · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+  // ano dinâmico
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // header sticky border quando rola
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    if (window.scrollY > 8) header.classList.add('is-stuck');
+    else header.classList.remove('is-stuck');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // scroll reveal
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
+
+  // ----- hero canvas: embedding scatter -----
+  (function initHeroCanvas(){
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const css = getComputedStyle(document.documentElement);
+    const COLOR_MID = (css.getPropertyValue('--mid').trim()    || '#5A5A56');
+    const COLOR_ACC = (css.getPropertyValue('--accent').trim() || '#1A36C9');
+
+    const isMobile = window.matchMedia('(max-width: 720px)').matches;
+    const DENSITY = isMobile ? 0.5 : 1;
+
+    let w = 0, h = 0;
+    let dots = [];
+    let mouse = { x: -9999, y: -9999, active: false };
+    let raf = null, startTime = performance.now();
+
+    // simple seeded rng so layout is stable on resize
+    function rng(seed){
+      let s = (seed | 0) || 1;
+      return () => { s = (s * 1664525 + 1013904223) | 0; return ((s >>> 0) / 4294967296); };
+    }
+    function gauss(rand){
+      let u = 0, v = 0;
+      while (u === 0) u = rand();
+      while (v === 0) v = rand();
+      return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    }
+    function hexToRgba(hex, a){
+      let x = hex.replace('#','').trim();
+      if (x.length === 3) x = x.split('').map(c => c+c).join('');
+      const r = parseInt(x.slice(0,2),16);
+      const g = parseInt(x.slice(2,4),16);
+      const b = parseInt(x.slice(4,6),16);
+      return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+    }
+
+    function seed(){
+      const rand = rng(73);
+      const clusters = [
+        { cx: w * 0.18, cy: h * 0.32, sx: w * 0.09, sy: h * 0.15, n: Math.round(58 * DENSITY) },
+        { cx: w * 0.82, cy: h * 0.46, sx: w * 0.11, sy: h * 0.18, n: Math.round(64 * DENSITY) },
+        { cx: w * 0.46, cy: h * 0.82, sx: w * 0.18, sy: h * 0.09, n: Math.round(38 * DENSITY) },
+      ];
+      dots = [];
+      clusters.forEach(c => {
+        for (let i = 0; i < c.n; i++){
+          const x = c.cx + gauss(rand) * c.sx;
+          const y = c.cy + gauss(rand) * c.sy;
+          const pick = rand();
+          let color, alpha;
+          if (pick < 0.05)      { color = COLOR_ACC; alpha = 0.55; }
+          else if (pick < 0.30) { color = COLOR_MID; alpha = 0.32; }
+          else                  { color = COLOR_MID; alpha = 0.15; }
+          dots.push({
+            x0: x, y0: y, x: x, y: y,
+            baseR: 0.8 + rand() * 1.6,
+            color: color,
+            baseAlpha: alpha,
+            phase: rand() * Math.PI * 2,
+            speed: 0.00045 + rand() * 0.0011,
+            ampX: 3 + rand() * 12,
+            ampY: 3 + rand() * 12
+          });
+        }
+      });
+    }
+
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
+      canvas.width  = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+
+    function frame(now){
+      const t = now - startTime;
+      ctx.clearRect(0, 0, w, h);
+      const TH = 130;
+      const TH2 = TH * TH;
+      for (let i = 0; i < dots.length; i++){
+        const d = dots[i];
+        const tt = t * d.speed + d.phase;
+        d.x = d.x0 + Math.sin(tt) * d.ampX;
+        d.y = d.y0 + Math.cos(tt * 0.85) * d.ampY;
+        let r = d.baseR;
+        let a = d.baseAlpha;
+        let color = d.color;
+        if (mouse.active){
+          const dx = d.x - mouse.x;
+          const dy = d.y - mouse.y;
+          const dist2 = dx*dx + dy*dy;
+          if (dist2 < TH2){
+            const k = 1 - Math.sqrt(dist2) / TH;
+            r += k * 2.4;
+            a = Math.min(0.95, a + k * 0.55);
+            color = COLOR_ACC;
+          }
+        }
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = hexToRgba(color, a);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(frame);
+    }
+
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    if (reduceMotion){
+      // render single static frame
+      frame(performance.now());
+      cancelAnimationFrame(raf);
+      return;
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      if (e.clientY >= rect.top && e.clientY <= rect.bottom){
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.active = true;
+      } else {
+        mouse.active = false;
+      }
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => { mouse.active = false; });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden){
+        cancelAnimationFrame(raf);
+        raf = null;
+      } else if (!raf){
+        startTime = performance.now() - 0;
+        raf = requestAnimationFrame(frame);
+      }
+    });
+
+    raf = requestAnimationFrame(frame);
+  })();
+
+  // ----- morphing word in headline -----
+  (function initMorph(){
+    const el = document.querySelector('.morph');
+    if (!el) return;
+    const words = (el.dataset.words || '').split(',').map(s => s.trim()).filter(Boolean);
+    if (words.length < 2) return;
+
+    // measure widest word to lock min-width and prevent reflow
+    const probe = document.createElement('span');
+    const cs = getComputedStyle(el);
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;' +
+      'font-family:' + cs.fontFamily + ';' +
+      'font-size:'   + cs.fontSize + ';' +
+      'font-weight:' + cs.fontWeight + ';' +
+      'font-style:italic;' +
+      'letter-spacing:' + cs.letterSpacing + ';';
+    document.body.appendChild(probe);
+    let maxW = 0;
+    words.forEach(w => {
+      probe.textContent = w;
+      maxW = Math.max(maxW, probe.offsetWidth);
+    });
+    document.body.removeChild(probe);
+    el.style.minWidth = (maxW + 2) + 'px';
+
+    el.innerHTML = '<span class="word">' + words[0] + '</span>';
+
+    if (reduceMotion) return;
+
+    let i = 0;
+    const swap = () => {
+      if (document.hidden) return;
+      const current = el.querySelector('.word');
+      if (!current) return;
+      current.classList.add('is-leaving');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        const next = document.createElement('span');
+        next.className = 'word is-entering';
+        next.textContent = words[i];
+        if (current.parentNode === el) el.replaceChild(next, current);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => next.classList.remove('is-entering'));
+        });
+      }, 420);
+    };
+    setInterval(swap, 3200);
+  })();
+</script>
 
 </body>
 </html>
