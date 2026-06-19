@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis | AI & Dev Surf Rider</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff; /* Azul Oceano Clássico do GH */
+            --surf-neon: #00f0ff;    /* Azul Surfista Cyberpunk */
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #30363d;
+        }
+        nav {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: var(--surf-neon);
+        }
+        .logo {
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+        .hero {
+            max-width: 1000px;
+            margin: 140px auto 60px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #f0f6fc;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 4rem;
+        }
+        h2 {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+            color: #f0f6fc;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--surf-neon);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #f0f6fc;
+        }
+        .tech-tags {
+            margin-top: 1rem;
+        }
+        .tag {
+            background-color: #21262d;
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🏄‍♂️ LUIS.DEV // SURF CAMP</div>
+            <div>
+                <a href="#sobre">Sobre o Drop</a>
+                <a href="#habilidades">Shaper Room</a>
+                <a href="#projetos">Ondas Dominadas</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Luis Henrique</h1>
+        <p>Dropando as maiores ondas da Inteligência Artificial & Cloud Infrastructure. Ensinando a próxima geração a navegar com alegria e inteligência.</p>
+    </div>
+
+    <div class="container">
+        
+        <section id="sobre">
+            <h2>Sobre o Drop 🌊</h2>
+            <p>No ecossistema digital, programar e implementar IA é como surfar: exige leitura rápida do cenário, equilíbrio constante e a prancha certa para cada mar. Minha missão é construir infraestruturas de servidores robustas, arquitetar soluções inteligentes e provar para o meu filho que as linhas de código e os modelos de IA são a melhor correnteza para nos levar mais longe, com leveza e diversão.</p>
+        </section>
+
+        <section id="habilidades">
+            <h2>Meu Shaper Room (Habilidades) ⚙️</h2>
+            <div class="skills-list">
+                <span class="tag">Inteligência Artificial</span>
+                <span class="tag">Engenharia de Prompt</span>
+                <span class="tag">Google Cloud Platform</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Infraestrutura Web & WHM</span>
+                <span class="tag">LiteSpeed Servers</span>
+                <span class="tag">Automação com Agentes de IA</span>
+                <span class="tag">Arquitetura de TI</span>
+            </div>
+        </section>
+
+        <section id="projetos">
+            <h2>Ondas Dominadas (Projetos em Destaque) 🏆</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>Edge AI & Microcontroladores</h3>
+                    <p>Modelos leves de Machine Learning otimizados para rodar localmente e em ecossistemas embarcados inteligentes.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TinyML</span>
+                        <span class="tag">Hardware</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Cloud & High Performance Web</h3>
+                    <p>Configuração e otimização de servidores de alta performance utilizando LiteSpeed e arquiteturas em nuvem resilientes.</p>
+                    <div class="tech-tags">
+                        <span class="tag">GCP</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">LiteSpeed</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>AI Mentoring / Next-Gen Code</h3>
+                    <p>Metodologias práticas e gamificadas para introduzir lógica de programação e ferramentas avançadas de IA para novos "padawans".</p>
+                    <div class="tech-tags">
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">Gamificação</span>
+                        <span class="tag">Educação</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Desenvolvido por Luis Henrique. Hospedado com orgulho no GitHub Pages 🌊</p>
+    </footer>
+
+</body>
+</html>
