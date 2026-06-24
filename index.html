@@ -1,320 +1,398 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Henrique | Enterprise Infrastructure & AI Solutions</title>
+    <title>Luis Henrique Ponciano | Consultoria & Estratégia</title>
     <style>
         :root {
-            --primary-brand: #0070f3; /* Azul profissional corporativo */
-            --bg-main: #0a0f1d;       /* Fundo dark elegante e profundo */
-            --bg-card: #121829;       /* Fundo dos blocos de conteúdo */
-            --text-main: #f4f6fb;     /* Texto claro de alta leitura */
-            --text-muted: #8fa0dd;    /* Texto secundário/subtítulos */
-            --surf-glow: #00f0ff;     /* Toque moderno neon para elementos de destaque */
-            --border-color: #1e2640;
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #d97706;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-light: #f1f5f9;
+            --card-bg: #ffffff;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
+            background-color: #f8fafc;
+            color: #334155;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
+        /* Header & Nav */
         header {
-            background-color: rgba(10, 15, 29, 0.85);
-            backdrop-filter: blur(12px);
+            background-color: var(--primary-color);
+            color: var(--text-main);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        nav {
+        .nav-container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-            letter-spacing: -0.5px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .logo span {
-            color: var(--primary-brand);
+            color: var(--accent-color);
         }
 
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--surf-glow);
-        }
-
-        .hero {
-            max-width: 1100px;
-            margin: 160px auto 80px;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .hero-badge {
-            background: rgba(0, 112, 243, 0.1);
-            border: 1px solid rgba(0, 112, 243, 0.3);
-            color: var(--surf-glow);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-brand);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 4px 14px rgba(0, 112, 243, 0.3);
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            background-color: #1a80ff;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem 60px;
-        }
-
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .section-desc {
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-size: 1.05rem;
-            max-width: 600px;
-        }
-
-        .grid-services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
             gap: 2rem;
         }
 
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--primary-brand);
-            transform: translateY(-4px);
-        }
-
-        .card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .card p {
+        .nav-menu a {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: rgba(30, 38, 64, 0.5);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s;
         }
 
-        .mentor-box {
-            background: linear-gradient(135deg, rgba(0, 112, 243, 0.05) 0%, rgba(0, 240, 255, 0.05) 100%);
-            border: 1px solid rgba(0, 112, 243, 0.2);
-            border-radius: 16px;
-            padding: 3rem;
-            margin-top: 2rem;
-            position: relative;
+        .nav-menu a:hover {
+            color: var(--text-main);
         }
 
-        .mentor-box h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--surf-glow);
-        }
-
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-muted);
+        .lang-switch {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
             font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
+            transition: all 0.3s;
         }
 
+        .lang-switch:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-main);
+            padding: 8rem 2rem 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--text-main);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #b45309;
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        /* About Section */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-text {
+            max-width: 700px;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--secondary-color);
+        }
+
+        /* Responsividade Básica */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
+            .nav-menu {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <nav>
-            <a href="#" class="logo">LUIS HENRIQUE<span>.COM</span></a>
-            <div class="nav-links">
-                <a href="#solutions">Core Solutions</a>
-                <a href="#mentorship">AI Surf Mentorship</a>
-                <a href="#about">About</a>
-            </div>
-        </nav>
+        <div class="nav-container">
+            <div class="logo">LUIS HENRIQUE<span>.P</span></div>
+            <ul class="nav-menu">
+                <li><a href="#services" id="nav-services">Serviços</a></li>
+                <li><a href="#about" id="nav-about">Sobre</a></li>
+                <li><a href="#contact" id="nav-contact">Contato</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">EN</button></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="hero">
-        <div class="hero-badge">Available for Enterprise Architecture & Consulting</div>
-        <h1>Architecting Intelligent Infrastructure & High Performance Web</h1>
-        <p>Expert consulting in high-scale server environments, artificial intelligence integration, cloud strategy, and system architecture built to scale.</p>
-        <a href="https://luishenriqueponciano.com.br" class="cta-button" target="_blank">Visit Official Site</a>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="hero-title">Seu Negócio Local no Próximo Nível</h1>
+            <p id="hero-desc">Oferecemos soluções completas de planejamento financeiro, diagnóstico empresarial preciso e branding impactante para destacar sua marca.</p>
+            <a href="#contact" class="cta-btn" id="hero-cta">Agende uma Consultoria</a>
+        </div>
+    </section>
 
-    <div class="container">
-        
-        <section id="solutions">
-            <h2>Enterprise Solutions</h2>
-            <p class="section-desc">High-performance implementations designed to ensure reliability, security, and smart scalability.</p>
-            
-            <div class="grid-services">
-                <div class="card">
-                    <h3>High-Performance Web Hosting</h3>
-                    <p>Advanced optimizations using LiteSpeed Enterprise servers, customized cPanel/WHM ecosystems, and secure cloud environments tailored for business critical applications.</p>
-                    <div class="tag-list">
-                        <span class="tag">LiteSpeed</span>
-                        <span class="tag">cPanel/WHM</span>
-                        <span class="tag">Security</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>AI Engineering & Automations</h3>
-                    <p>Development of autonomous agents, bespoke prompt engineering systems, and integration of localized LLM models for operational scaling.</p>
-                    <div class="tag-list">
-                        <span class="tag">LLMs</span>
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">Python</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Cloud Architecture</h3>
-                    <p>Designing enterprise deployments across Google Cloud Platform (GCP) and AWS infrastructure with zero-downtime migration strategies.</p>
-                    <div class="tag-list">
-                        <span class="tag">GCP</span>
-                        <span class="tag">AWS</span>
-                        <span class="tag">DevOps</span>
-                    </div>
-                </div>
+    <section id="services">
+        <h2 class="section-title" id="services-title">Nossas Soluções</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 id="s1-title">Planejamento Financeiro</h3>
+                <p id="s1-desc">Organize suas finanças de forma estratégica, defina metas realistas e conquiste a estabilidade e lucratividade que seu negócio merece.</p>
             </div>
-        </section>
-
-        <section id="mentorship">
-            <h2>The Next Generation</h2>
-            <p class="section-desc">Demystifying technology through sharing and gamified learning experiences.</p>
-            
-            <div class="mentor-box">
-                <h3>Riding the AI Wave 🏄‍♂️</h3>
-                <p>Coding and understanding AI ecosystems is a lot like surfing: it requires analyzing the environment, maintaining balance, and picking the right board. Through this digital playground, I share how I introduce my child to logic, hardware, and machine learning—making the complex sea of code accessible, smart, and deeply enjoyable for the next generation of builders.</p>
+            <div class="service-card">
+                <h3 id="s2-title">Diagnóstico de Negócios</h3>
+                <p id="s2-desc">Identificamos os pontos fortes e gargalos da sua operação, traçando um plano estratégico personalizado para acelerar seu crescimento.</p>
             </div>
-        </section>
+            <div class="service-card">
+                <h3 id="s3-title">Criação de Marcas & Branding</h3>
+                <p id="s3-desc">Desenvolvemos uma identidade visual única e memorável, que conecta seu negócio com o público-alvo ideal e gera valor real.</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2>About & Vision</h2>
-            <p style="color: var(--text-muted); max-width: 800px; font-size: 1.1rem;">
-                Based in São Paulo, Brazil, I bridge the gap between heavy hardware processing capability and state-of-the-art AI software. With a degree focused on Computer Engineering, I specialize in building solutions that optimize cloud spending while scaling enterprise application delivery without bottlenecks.
-            </p>
-        </section>
+    <section id="about" style="background-color: #f1f5f9;">
+        <h2 class="section-title" id="about-title">Sobre Nós</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p id="about-p1">Trabalhamos com o compromisso de transformar a realidade de pequenas empresas e negócios locais através de inteligência financeira e marketing estratégico.</p>
+                <br>
+                <p id="about-p2">Nossa missão é descomplicar a gestão empresarial, oferecendo ferramentas claras e práticas para que você foque no que faz de melhor: crescer.</p>
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <section id="contact">
+        <h2 class="section-title" id="contact-title">Contato</h2>
+        <div class="contact-container">
+            <p id="contact-desc">Pronto para dar o próximo passo? Entre em contato e agende um diagnóstico gratuito para a sua empresa.</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> contato@luishenriqueponciano.com.br</p>
+                <br>
+                <a href="mailto:contato@luishenriqueponciano.com.br" class="cta-btn" id="contact-btn">Enviar Mensagem</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Luis Henrique Ponciano. All rights reserved.</p>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: rgba(143, 160, 221, 0.4);">Mirrored Profile Architecture built via GitHub Pages.</p>
+        <p>&copy; 2026 Luis Henrique Ponciano. <span id="footer-text">Todos os direitos reservados.</span></p>
     </footer>
 
+    <script>
+        let currentLang = 'pt';
+
+        const translations = {
+            pt: {
+                navServices: "Serviços",
+                navAbout: "Sobre",
+                navContact: "Contato",
+                langBtn: "EN",
+                heroTitle: "Seu Negócio Local no Próximo Nível",
+                heroDesc: "Oferecemos soluções completas de planejamento financeiro, diagnóstico empresarial preciso e branding impactante para destacar sua marca.",
+                heroCta: "Agende uma Consultoria",
+                servicesTitle: "Nossas Soluções",
+                s1Title: "Planejamento Financeiro",
+                s1Desc: "Organize suas finanças de forma estratégica, defina metas realistas e conquiste a estabilidade e lucratividade que seu negócio merece.",
+                s2Title: "Diagnóstico de Negócios",
+                s2Desc: "Identificamos os pontos fortes e gargalos da sua operação, traçando um plano estratégico personalizado para acelerar seu crescimento.",
+                s3Title: "Criação de Marcas & Branding",
+                s3Desc: "Desenvolvemos uma identidade visual única e memorável, que conecta seu negócio com o público-alvo ideal e gera valor real.",
+                aboutTitle: "Sobre Nós",
+                aboutP1: "Trabalhamos com o compromisso de transformar a realidade de pequenas empresas e negócios locais através de inteligência financeira e marketing estratégico.",
+                aboutP2: "Nossa missão é descomplicar a gestão empresarial, oferecendo ferramentas claras e práticas para que você foque no que faz de melhor: crescer.",
+                contactTitle: "Contato",
+                contactDesc: "Pronto para dar o próximo passo? Entre em contato e agende um diagnóstico gratuito para a sua empresa.",
+                contactBtn: "Enviar Mensagem",
+                footerText: "Todos os direitos reservados."
+            },
+            en: {
+                navServices: "Services",
+                navAbout: "About",
+                navContact: "Contact",
+                langBtn: "PT",
+                heroTitle: "Your Local Business at the Next Level",
+                heroDesc: "We offer comprehensive solutions in financial planning, precise business diagnostics, and impactful branding to elevate your brand.",
+                heroCta: "Schedule a Consultation",
+                servicesTitle: "Our Solutions",
+                s1Title: "Financial Planning",
+                s1Desc: "Organize your finances strategically, set realistic goals, and achieve the stability and profitability your business deserves.",
+                s2Title: "Business Diagnostics",
+                s2Desc: "We identify the strengths and bottlenecks of your operation, mapping out a custom strategic plan to accelerate your growth.",
+                s3Title: "Branding & Identity",
+                s3Desc: "We develop a unique and memorable visual identity that connects your business with the ideal target audience and creates real value.",
+                aboutTitle: "About Us",
+                aboutP1: "We work with the commitment to transform the reality of small and local businesses through financial intelligence and strategic marketing.",
+                aboutP2: "Our mission is to simplify business management, offering clear and practical tools so you can focus on what you do best: growing.",
+                contactTitle: "Contact",
+                contactDesc: "Ready to take the next step? Get in touch and schedule a free diagnostic session for your business.",
+                contactBtn: "Send Message",
+                footerText: "All rights reserved."
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            const lang = translations[currentLang];
+            
+            document.getElementById('nav-services').innerText = lang.navServices;
+            document.getElementById('nav-about').innerText = lang.navAbout;
+            document.getElementById('nav-contact').innerText = lang.navContact;
+            document.getElementById('lang-btn').innerText = lang.langBtn;
+            
+            document.getElementById('hero-title').innerText = lang.heroTitle;
+            document.getElementById('hero-desc').innerText = lang.heroDesc;
+            document.getElementById('hero-cta').innerText = lang.heroCta;
+            
+            document.getElementById('services-title').innerText = lang.servicesTitle;
+            document.getElementById('s1-title').innerText = lang.s1Title;
+            document.getElementById('s1-desc').innerText = lang.s1Desc;
+            document.getElementById('s2-title').innerText = lang.s2Title;
+            document.getElementById('s2-desc').innerText = lang.s2Desc;
+            document.getElementById('s3-title').innerText = lang.s3Title;
+            document.getElementById('s3-desc').innerText = lang.s3Desc;
+            
+            document.getElementById('about-title').innerText = lang.aboutTitle;
+            document.getElementById('about-p1').innerText = lang.aboutP1;
+            document.getElementById('about-p2').innerText = lang.aboutP2;
+            
+            document.getElementById('contact-title').innerText = lang.contactTitle;
+            document.getElementById('contact-desc').innerText = lang.contactDesc;
+            document.getElementById('contact-btn').innerText = lang.contactBtn;
+            
+            document.getElementById('footer-text').innerText = lang.footerText;
+            
+            // Altera o atributo lang do HTML
+            document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+        }
+    </script>
 </body>
 </html>
